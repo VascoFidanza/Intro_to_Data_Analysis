@@ -1,8 +1,8 @@
 import pandas as pd
 
-def load_data(file_path):
+def load_data(file_path, parse_dates=[]):
     """Load the CSV file into a DataFrame."""
-    return pd.read_csv(file_path)
+    return pd.read_csv(file_path, parse_dates=parse_dates)
 
 def explore_data(df):
     """Print basic information and head of the DataFrame."""
@@ -17,9 +17,9 @@ def main():
     submissions_path = '/Users/vascofidanza/Documents/Data Analytics Projects/Udacity/Intro_to_Data_Analysis/Data/cleanedSubmissions.csv'
 
     # Load the cleaned data
-    enrollments = load_data(enrollments_path)
-    engagement = load_data(engagement_path)
-    submissions = load_data(submissions_path)
+    enrollments = load_data(enrollments_path, parse_dates=['join_date', 'cancel_date'])
+    engagement = load_data(engagement_path, parse_dates=['utc_date'])
+    submissions = load_data(submissions_path, parse_dates=['creation_date', 'completion_date'])
 
     # Explore the data
     print("Enrollments:")

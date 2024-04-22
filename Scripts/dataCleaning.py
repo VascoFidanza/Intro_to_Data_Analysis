@@ -6,9 +6,9 @@ def clean_enrollments(filename):
     df = pd.read_csv(filename)
     
     df['days_to_cancel'] = pd.to_numeric(df['days_to_cancel'], errors='coerce').fillna(0).astype(int)
-    df['cancel_date'] = pd.to_datetime(df['cancel_date'], errors='coerce', format='%Y-%m-%d')
+    df['cancel_date'] = pd.to_datetime(df['cancel_date'], errors='coerce')
     df['join_date'] = pd.to_datetime(df['join_date'], errors='coerce', format='%Y-%m-%d')
-    
+
     # Replace 'cleaned_enrollments.csv' with the path/filename you want to save to
     df.to_csv('/Users/vascofidanza/Documents/Data Analytics Projects/Udacity/Intro_to_Data_Analysis/Data/cleanedEnrollments.csv', index=False)
 
