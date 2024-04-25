@@ -16,6 +16,8 @@ def clean_enrollments(filename):
 def clean_engagement(filename):
     df = pd.read_csv(filename)
     
+    df.rename(columns={'acct': 'account_key'}, inplace=True)
+
     df['utc_date'] = pd.to_datetime(df['utc_date'], errors='coerce', format='%Y-%m-%d')
     df['num_courses_visited'] = pd.to_numeric(df['num_courses_visited'], errors='coerce').fillna(0).astype(int)
     df['lessons_completed'] = pd.to_numeric(df['lessons_completed'], errors='coerce').fillna(0).astype(int)
@@ -37,18 +39,19 @@ def clean_submissions(filename):
     # Replace 'cleaned_submissions.csv' with the path/filename you want to save to
     df.to_csv('/Users/vascofidanza/Documents/Data Analytics Projects/Udacity/Intro_to_Data_Analysis/Data/cleanedSubmissions.csv', index=False)
 
+
 def main():
     # Define file paths
-    enrollments_path = '/Users/vascofidanza/Documents/Data Analytics Projects/Udacity/Intro_to_Data_Analysis/Data/enrollments.csv'
-    engagement_path = '/Users/vascofidanza/Documents/Data Analytics Projects/Udacity/Intro_to_Data_Analysis/Data/daily_engagement.csv'
-    submissions_path = '/Users/vascofidanza/Documents/Data Analytics Projects/Udacity/Intro_to_Data_Analysis/Data/project_submissions.csv'
+    enrollments = '/Users/vascofidanza/Documents/Data Analytics Projects/Udacity/Intro_to_Data_Analysis/Data/enrollments.csv'
+    engagement = '/Users/vascofidanza/Documents/Data Analytics Projects/Udacity/Intro_to_Data_Analysis/Data/daily_engagement.csv'
+    submissions = '/Users/vascofidanza/Documents/Data Analytics Projects/Udacity/Intro_to_Data_Analysis/Data/project_submissions.csv'
 
+    
     # Clean data
-    clean_enrollments(enrollments_path)
-    clean_engagement(engagement_path)
-    clean_submissions(submissions_path)
+    clean_enrollments(enrollments)
+    clean_engagement(engagement)
+    clean_submissions(submissions)
 
-    print("Data cleaning completed and files saved.")
 
 if __name__ == "__main__":
     main()

@@ -1,4 +1,4 @@
-acct,utc_date,num_courses_visited,total_minutes_visited,lessons_completed,projects_completed
+account_key,utc_date,num_courses_visited,total_minutes_visited,lessons_completed,projects_completed
 0,2015-01-09,1,11.6793745,0,0
 0,2015-01-10,2,37.2848873333,0,0
 0,2015-01-11,2,53.6337463333,0,0
